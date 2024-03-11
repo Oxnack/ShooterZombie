@@ -17,6 +17,7 @@ namespace PlayerController
         private PlayerMove _playerMove = new PlayerMove();
         private PlayerShoot _playerShoot = new PlayerShoot();
         private CameraMouseLook _cameraMouseLook = new CameraMouseLook();
+        public HP Hp = new HP(); 
 
         private Rigidbody _rb;
         private Vector3 _walkDirection;
@@ -142,6 +143,16 @@ namespace PlayerController
             character.Rotate(Vector3.up * mouseX);
         }
 
+    }
+
+    public class HP
+    {
+        public int hp = 100;
+
+        public void GetAttack(int hpM)
+        {
+            hp -= hpM;
+        }
     }
 
     public class PlayerShoot

@@ -154,9 +154,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f25f7a9ecbc8c19459d25413f966b522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speedWalk: 8.27
-  _jumpPower: 390.9
-  _sensitivity: 60.78
+  _speedWalk: 2.8
+  _jumpPower: 209.2
+  _sensitivity: 57.1
   _camera: {fileID: 7189173896675492777}
 --- !u!54 &2260780612507613509
 Rigidbody:
