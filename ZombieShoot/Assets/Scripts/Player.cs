@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
+using UnityEngine.UI;
 
 
 namespace PlayerController
@@ -13,11 +14,13 @@ namespace PlayerController
         [SerializeField] private float _jumpPower;
         [SerializeField] private float _sensitivity;
         [SerializeField] private GameObject _camera;
+        [SerializeField] private Slider _slider;
+        [SerializeField] private Text _text;
 
         private PlayerMove _playerMove = new PlayerMove();
         private PlayerShoot _playerShoot = new PlayerShoot();
         private CameraMouseLook _cameraMouseLook = new CameraMouseLook();
-        public HP Hp = new HP(); 
+        public HP Hp = new HP();
 
         private Rigidbody _rb;
         private Vector3 _walkDirection;
@@ -41,6 +44,9 @@ namespace PlayerController
         {
             _playerMove.Update();
             _cameraMouseLook.Update();
+
+            _slider.value = Hp.hp;
+            _text.text = Hp.hp.ToString();
         }
 
         private void FixedUpdate()
