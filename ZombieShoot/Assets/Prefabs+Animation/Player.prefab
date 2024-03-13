@@ -158,8 +158,11 @@ MonoBehaviour:
   _jumpPower: 209.2
   _sensitivity: 57.1
   _camera: {fileID: 7189173896675492777}
+  _rayVis: {fileID: 4096839284731367996, guid: f01be4005f8300c4c9decf872223b5fd, type: 3}
   _slider: {fileID: 0}
   _text: {fileID: 0}
+  _damage: 30
+  _timeToAttack: 1
 --- !u!54 &2260780612507613509
 Rigidbody:
   m_ObjectHideFlags: 0
