@@ -1,3 +1,4 @@
+using Enemy;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -16,10 +17,13 @@ namespace PlayerController
         [SerializeField] private GameObject _camera;
         [SerializeField] private Slider _slider;
         [SerializeField] private Text _text;
+        [SerializeField] private int _damage = 30;
+        [SerializeField] private float _timeToAttack = 1f;
 
         private PlayerMove _playerMove = new PlayerMove();
         private PlayerShoot _playerShoot = new PlayerShoot();
         private CameraMouseLook _cameraMouseLook = new CameraMouseLook();
+        private PlayerShoot PlayerShoot = new PlayerShoot();    
         public HP Hp = new HP();
 
         private Rigidbody _rb;
@@ -39,6 +43,9 @@ namespace PlayerController
             _cameraMouseLook.camera = _camera;
             _cameraMouseLook.sensitivity = _sensitivity;
 
+            PlayerShoot.time = _timeToAttack;
+            PlayerShoot.damage = _damage;
+
         }
         private void Update()
         {
@@ -47,6 +54,8 @@ namespace PlayerController
 
             _slider.value = Hp.hp;
             _text.text = Hp.hp.ToString();
+
+            PlayerShoot.Update();
         }
 
         private void FixedUpdate()
@@ -153,7 +162,33 @@ namespace PlayerController
 
     public class PlayerShoot
     {
+        public int damage = 30;
+        public float time = 1f;
+        private float raycastDistance = 200f;
+        private bool _okToAttack = true;
+        public void Update()
+        {
+            if (Input.GetMouseButtonDown(0) && _okToAttack == true) // Проверяем нажатие левой кнопки мыши
+            {
+                _okToAttack = false;
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
 
+                if (Physics.Raycast(ray, out hit, raycastDistance))
+                {
+                    if (hit.collider.CompareTag("Zombie")) // Проверяем тег объекта, с которым столкнулся луч
+                    {
+                        hit.collider.GetComponent<Zombie>().Hp.GetAttack(damage); // Вызываем метод GetAttack() у компонента Zombie
+                    }
+                }
+                GetOkToAttack();
+            }
+        }
+        public IEnumerator GetOkToAttack()
+        {
+            yield return new WaitForSeconds(time);
+            _okToAttack = true;
+        }
     }
 
 }
