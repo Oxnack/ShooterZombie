@@ -18,6 +18,7 @@ namespace Enemy
         private Rigidbody _rb;
 
         private Attack _attack = new Attack();
+        public HP Hp = new HP();
 
 
 
