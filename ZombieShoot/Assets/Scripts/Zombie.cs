@@ -47,7 +47,11 @@ namespace Enemy
             // Двигаем объект с помощью Rigidbody.MovePosition
             _rb.MovePosition(_rb.position + moveDirection * _speed * Time.deltaTime);
 
-            StartCoroutine(_attack.GetDamageByTime(_time, _distance, _damage));
+            if ( _attack.isAttacking == false)
+            {
+                _attack.isAttacking = true;
+                StartCoroutine(_attack.GetDamageByTime(_time, _distance, _damage));
+            }
         }
     }
 
@@ -58,12 +62,12 @@ namespace Enemy
         public bool isAttacking = false;
         public IEnumerator GetDamageByTime(float time, float distance, int damage)
         {
-            while (Vector3.Distance(transform.position, player.transform.position) < distance)
+            while (Vector3.Distance(transform.position, player.transform.position) < distance && isAttacking == true)
             {
                 yield return new WaitForSeconds(time);
                 player.GetComponent<Player>().Hp.GetAttack(damage);
             }
-            
+            isAttacking = false;
         }
     }
 }

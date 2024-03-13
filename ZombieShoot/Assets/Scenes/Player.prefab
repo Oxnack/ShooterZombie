@@ -139,9 +139,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
-  m_Height: 2.653185
+  m_Height: 2.2485814
   m_Direction: 1
-  m_Center: {x: 0, y: -0.14905286, z: 0}
+  m_Center: {x: 0, y: 0.053248882, z: 0}
 --- !u!114 &3995234486027870848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,10 +154,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f25f7a9ecbc8c19459d25413f966b522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speedWalk: 2.8
+  _speedWalk: 4
   _jumpPower: 209.2
   _sensitivity: 57.1
   _camera: {fileID: 7189173896675492777}
+  _slider: {fileID: 0}
+  _text: {fileID: 0}
 --- !u!54 &2260780612507613509
 Rigidbody:
   m_ObjectHideFlags: 0
