@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ZombieSpawner : MonoBehaviour
+public class ZombieSpawner : MonoBehaviour                   // писал gpt
 {
     [SerializeField] private GameObject _zombiePrefab;
     public Vector3 spawnZoneMin;
