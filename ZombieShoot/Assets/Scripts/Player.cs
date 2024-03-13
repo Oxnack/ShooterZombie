@@ -15,7 +15,6 @@ namespace PlayerController
         [SerializeField] private float _jumpPower;
         [SerializeField] private float _sensitivity;
         [SerializeField] private GameObject _camera;
-        [SerializeField] private GameObject _rayVis;
         [SerializeField] private Slider _slider;
         [SerializeField] private Text _text;
         [SerializeField] private int _damage = 30;
@@ -45,9 +44,7 @@ namespace PlayerController
             _cameraMouseLook.sensitivity = _sensitivity;
 
             PlayerShoot.time = _timeToAttack;
-            PlayerShoot.damage = _damage;
-            PlayerShoot.rayVis = _rayVis;
-            PlayerShoot.camera = _camera;   
+            PlayerShoot.damage = _damage;   
 
         }
         private void Update()
@@ -165,13 +162,10 @@ namespace PlayerController
 
     public class PlayerShoot
     {
-        public GameObject rayVis;
-        public GameObject camera;
         public int damage = 30;
         public float time = 1f;
         public bool _okToAttack = true;
         private float raycastDistance = 200f;
-        private float rayDuration = 2f;
 
         public IEnumerator CheckAttack()
         {
@@ -182,7 +176,6 @@ namespace PlayerController
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
 
-                Object.Instantiate(rayVis, camera.transform, true);
                 if (Physics.Raycast(ray, out hit, raycastDistance))
                 {
                     if (hit.collider.CompareTag("Zombie")) // Проверяем тег объекта, с которым столкнулся луч
