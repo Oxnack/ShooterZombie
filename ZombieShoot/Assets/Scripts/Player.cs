@@ -56,6 +56,12 @@ namespace PlayerController
             _text.text = Hp.hp.ToString();
 
             StartCoroutine(PlayerShoot.CheckAttack());
+
+            if(Hp.life == false)
+            {
+                transform.position = new Vector3(0f,4f,0f);
+                Hp.life = true;
+            }
         }
 
         private void FixedUpdate()

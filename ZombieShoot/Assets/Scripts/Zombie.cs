@@ -60,6 +60,11 @@ namespace Enemy
 
             _sliderHp.value = Hp.hp;
             _textHp.text = Hp.hp.ToString();
+
+            if(Hp.life == false)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 
