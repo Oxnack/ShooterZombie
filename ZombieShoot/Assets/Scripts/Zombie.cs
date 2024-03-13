@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Enemy
 {
@@ -12,6 +13,9 @@ namespace Enemy
         [SerializeField] private float _distance = 1f;
         [SerializeField] private float _time = 1f;
         [SerializeField] private int _damage = 15;
+
+        [SerializeField] private Slider _sliderHp;
+        [SerializeField] private Text _textHp;
 
 
         private GameObject _target; // —сылка на целевой объект
@@ -53,6 +57,9 @@ namespace Enemy
                 _attack.isAttacking = true;
                 StartCoroutine(_attack.GetDamageByTime(_time, _distance, _damage));
             }
+
+            _sliderHp.value = Hp.hp;
+            _textHp.text = Hp.hp.ToString();
         }
     }
 
