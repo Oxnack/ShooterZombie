@@ -63,6 +63,7 @@ namespace Enemy
 
             if(Hp.life == false)
             {
+                _target.GetComponent<Player>().Kills.GetKill(1);
                 Destroy(gameObject);
             }
         }

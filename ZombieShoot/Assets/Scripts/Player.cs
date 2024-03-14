@@ -17,6 +17,7 @@ namespace PlayerController
         [SerializeField] private GameObject _camera;
         [SerializeField] private Slider _slider;
         [SerializeField] private Text _text;
+        [SerializeField] private TextMeshProUGUI _killsText;
         [SerializeField] private int _damage = 30;
         [SerializeField] private float _timeToAttack = 1f;
 
@@ -24,6 +25,7 @@ namespace PlayerController
         private PlayerShoot _playerShoot = new PlayerShoot();
         private CameraMouseLook _cameraMouseLook = new CameraMouseLook();
         private PlayerShoot PlayerShoot = new PlayerShoot();    
+        public Kills Kills = new Kills();
         public HP Hp = new HP();
 
         private Rigidbody _rb;
@@ -32,6 +34,8 @@ namespace PlayerController
 
         private void Awake()
         {
+            Debug.Log(PlayerPrefs.GetInt("kills"));
+
             _rb = GetComponent<Rigidbody>();
 
             _playerMove.speed = _speedWalk;
@@ -44,8 +48,9 @@ namespace PlayerController
             _cameraMouseLook.sensitivity = _sensitivity;
 
             PlayerShoot.time = _timeToAttack;
-            PlayerShoot.damage = _damage;   
+            PlayerShoot.damage = _damage;
 
+            Kills.textKills = _killsText;
         }
         private void Update()
         {
@@ -193,6 +198,32 @@ namespace PlayerController
                 yield return new WaitForSeconds(time);
                 _okToAttack = true;
             }
+        }
+    }
+
+    public class Kills
+    {
+        public int kills = 0;
+        public TextMeshProUGUI textKills;
+
+        public void GetKill(int kills)
+        {
+            if(PlayerPrefs.GetInt("kills") <= 0)
+            {
+                PlayerPrefs.SetInt("kills", 0);
+            }
+
+            this.kills += kills;
+            textKills.text = "Убийства: " + kills.ToString();
+            if (kills > PlayerPrefs.GetInt("kills"))
+            {
+                Save();
+            }
+        }
+
+        private void Save()
+        {
+            PlayerPrefs.SetInt("kills", kills);
         }
     }
 
