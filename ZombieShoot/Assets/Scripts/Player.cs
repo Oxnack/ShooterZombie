@@ -29,8 +29,6 @@ namespace PlayerController
         public HP Hp = new HP();
 
         private Rigidbody _rb;
-        private Vector3 _walkDirection;
-        private bool _isGrounded;
 
         private void Awake()
         {
@@ -206,18 +204,19 @@ namespace PlayerController
         public int kills = 0;
         public TextMeshProUGUI textKills;
 
-        public void GetKill(int kills)
+        public void GetKill(int kill)
         {
             if(PlayerPrefs.GetInt("kills") <= 0)
             {
                 PlayerPrefs.SetInt("kills", 0);
             }
 
-            this.kills += kills;
+            kills += kill;
             textKills.text = "Убийства: " + kills.ToString();
             if (kills > PlayerPrefs.GetInt("kills"))
             {
                 Save();
+                Debug.Log("kills: " + PlayerPrefs.GetInt("kills").ToString());
             }
         }
 
