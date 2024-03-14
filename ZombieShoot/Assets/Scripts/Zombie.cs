@@ -31,9 +31,6 @@ namespace Enemy
 
             _attack.transform = transform;
             _attack.player = _target;
-
-            
-            
         }
 
         void Update()

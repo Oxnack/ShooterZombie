@@ -4557,6 +4557,10 @@ PrefabInstance:
       propertyPath: _killsText
       value: 
       objectReference: {fileID: 234585108}
+    - target: {fileID: 3995234486027870848, guid: 8e84f7f6e7f66b94d8c2671e1162474f, type: 3}
+      propertyPath: _lobbyCanvas
+      value: 
+      objectReference: {fileID: 696519564}
     - target: {fileID: 6952978228506071845, guid: 8e84f7f6e7f66b94d8c2671e1162474f, type: 3}
       propertyPath: m_Name
       value: Player
@@ -8581,6 +8585,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6269f8d8acbd57346834785dd9d6417d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _player: {fileID: 957194831}
+  _bestScore: {fileID: 1011521600}
 --- !u!1001 &699581966
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11510,6 +11516,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a778b631c6253a04899cb31bad047c81, type: 3}
+--- !u!1 &957194831 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6952978228506071845, guid: 8e84f7f6e7f66b94d8c2671e1162474f, type: 3}
+  m_PrefabInstance: {fileID: 332116252}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &962932436
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21487,7 +21498,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1939041860}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 696519569}
+        m_TargetAssemblyTypeName: LobbyCavas, Assembly-CSharp
+        m_MethodName: GetStart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1939041860
 MonoBehaviour:
   m_ObjectHideFlags: 0

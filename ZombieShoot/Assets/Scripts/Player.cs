@@ -18,6 +18,7 @@ namespace PlayerController
         [SerializeField] private TextMeshProUGUI _killsText;
         [SerializeField] private int _damage = 30;
         [SerializeField] private float _timeToAttack = 1f;
+        [SerializeField] private GameObject _lobbyCanvas;
 
         private PlayerMove _playerMove = new PlayerMove();
         private PlayerShoot _playerShoot = new PlayerShoot();
@@ -63,6 +64,9 @@ namespace PlayerController
                 transform.position = new Vector3(0f,4f,0f);
                 Hp.life = true;
                 Hp.hp = 100;
+                Kills.kills = 0;
+                _lobbyCanvas.SetActive(true);
+                _lobbyCanvas.GetComponent<LobbyCavas>().enabled = true;
             }
         }
 
