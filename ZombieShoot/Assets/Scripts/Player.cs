@@ -61,6 +61,7 @@ namespace PlayerController
             {
                 transform.position = new Vector3(0f,4f,0f);
                 Hp.life = true;
+                Hp.hp = 100;
             }
         }
 
