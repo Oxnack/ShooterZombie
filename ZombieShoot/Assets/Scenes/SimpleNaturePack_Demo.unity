@@ -4726,7 +4726,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1355276365}
-  - {fileID: 1431663791}
   - {fileID: 1046979675}
   - {fileID: 234585107}
   m_Father: {fileID: 0}
@@ -8477,13 +8476,14 @@ GameObject:
   - component: {fileID: 696519567}
   - component: {fileID: 696519566}
   - component: {fileID: 696519565}
+  - component: {fileID: 696519569}
   m_Layer: 5
   m_Name: LobbyCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &696519565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8569,6 +8569,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &696519569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696519564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6269f8d8acbd57346834785dd9d6417d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &699581966
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15911,6 +15923,7 @@ RectTransform:
   - {fileID: 213867225}
   - {fileID: 804279447}
   - {fileID: 1071410957}
+  - {fileID: 1431663791}
   m_Father: {fileID: 339693182}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
@@ -16693,16 +16706,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1431663790}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 339693182}
+  m_Father: {fileID: 1355276365}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -114, y: 96.1}
+  m_AnchoredPosition: {x: -6.8, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1431663792
@@ -16718,7 +16731,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -16732,7 +16745,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -23578,6 +23591,6 @@ SceneRoots:
   - {fileID: 1451984608}
   - {fileID: 708087458}
   - {fileID: 1574796238}
-  - {fileID: 696519568}
   - {fileID: 1143039732}
   - {fileID: 339693182}
+  - {fileID: 696519568}
