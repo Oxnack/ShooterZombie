@@ -19,6 +19,7 @@ namespace PlayerController
         [SerializeField] private int _damage = 30;
         [SerializeField] private float _timeToAttack = 1f;
         [SerializeField] private GameObject _lobbyCanvas;
+        [SerializeField] private Animator _animator;
 
         private PlayerMove _playerMove = new PlayerMove();
         private PlayerShoot _playerShoot = new PlayerShoot();
@@ -46,6 +47,7 @@ namespace PlayerController
 
             PlayerShoot.time = _timeToAttack;
             PlayerShoot.damage = _damage;
+            PlayerShoot.animator = _animator;
 
             Kills.textKills = _killsText;
         }
@@ -174,6 +176,7 @@ namespace PlayerController
 
     public class PlayerShoot
     {
+        public Animator animator;
         public int damage = 30;
         public float time = 1f;
         public bool _okToAttack = true;
@@ -184,6 +187,7 @@ namespace PlayerController
 
             if (Input.GetMouseButtonDown(0) && _okToAttack == true) // Проверяем нажатие левой кнопки мыши
             {
+                animator.SetBool("shoot", true);
                 _okToAttack = false;
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
@@ -195,7 +199,9 @@ namespace PlayerController
                         hit.collider.GetComponent<Zombie>().Hp.GetAttack(damage); // Вызываем метод GetAttack() у компонента Zombie
                     }
                 }
-                yield return new WaitForSeconds(time);
+                yield return new WaitForSeconds(0.1f);
+                animator.SetBool("shoot", false);
+                yield return new WaitForSeconds(time); 
                 _okToAttack = true;
             }
         }

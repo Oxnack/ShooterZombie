@@ -4651,6 +4651,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1355276366}
     - target: {fileID: 3995234486027870848, guid: 8e84f7f6e7f66b94d8c2671e1162474f, type: 3}
+      propertyPath: _animator
+      value: 
+      objectReference: {fileID: 2034041808}
+    - target: {fileID: 3995234486027870848, guid: 8e84f7f6e7f66b94d8c2671e1162474f, type: 3}
       propertyPath: _killsText
       value: 
       objectReference: {fileID: 234585108}
@@ -4658,6 +4662,10 @@ PrefabInstance:
       propertyPath: _lobbyCanvas
       value: 
       objectReference: {fileID: 696519564}
+    - target: {fileID: 3995234486027870848, guid: 8e84f7f6e7f66b94d8c2671e1162474f, type: 3}
+      propertyPath: _timeToAttack
+      value: 0.36
+      objectReference: {fileID: 0}
     - target: {fileID: 6952978228506071845, guid: 8e84f7f6e7f66b94d8c2671e1162474f, type: 3}
       propertyPath: m_Name
       value: Player
@@ -14961,6 +14969,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 331250400350343088, guid: 30d819e0f44869f4e82f18d655b5c786, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 200ccbd94e26efd4d8ed0877bef464ee, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -22684,6 +22696,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 7405846476849834440, guid: c6308cb7062fac34e8e50600086b12a1, type: 3}
   m_PrefabInstance: {fileID: 1117767082}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2034041808 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 331250400350343088, guid: 30d819e0f44869f4e82f18d655b5c786, type: 3}
+  m_PrefabInstance: {fileID: 1276464718}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &2034268230 stripped
 Transform:
