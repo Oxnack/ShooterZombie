@@ -569,9 +569,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 3
-  _distance: 2
-  _time: 2
-  _damage: 3
+  _distance: 1.5
+  _time: 1
+  _damage: 5
   _sliderHp: {fileID: 6918341256116709117}
   _textHp: {fileID: 5030396094850750474}
 --- !u!82 &5068831594827309929
