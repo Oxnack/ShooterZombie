@@ -20,6 +20,8 @@ namespace PlayerController
         [SerializeField] private float _timeToAttack = 1f;
         [SerializeField] private GameObject _lobbyCanvas;
         [SerializeField] private Animator _animator;
+        [SerializeField] private AudioSource _reshoot;
+        [SerializeField] private AudioSource _shoot;
 
         private PlayerMove _playerMove = new PlayerMove();
         private PlayerShoot _playerShoot = new PlayerShoot();
@@ -48,6 +50,8 @@ namespace PlayerController
             PlayerShoot.time = _timeToAttack;
             PlayerShoot.damage = _damage;
             PlayerShoot.animator = _animator;
+            PlayerShoot.reshoot = _reshoot;
+            PlayerShoot.shoot = _shoot;
 
             Kills.textKills = _killsText;
         }
@@ -176,6 +180,8 @@ namespace PlayerController
 
     public class PlayerShoot
     {
+        public AudioSource reshoot;
+        public AudioSource shoot;
         public Animator animator;
         public int damage = 30;
         public float time = 1f;
@@ -187,6 +193,7 @@ namespace PlayerController
 
             if (Input.GetMouseButtonDown(0) && _okToAttack == true) // Проверяем нажатие левой кнопки мыши
             {
+                shoot.Play();
                 animator.SetBool("shoot", true);
                 _okToAttack = false;
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -201,6 +208,7 @@ namespace PlayerController
                 }
                 yield return new WaitForSeconds(0.1f);
                 animator.SetBool("shoot", false);
+                reshoot.Play();
                 yield return new WaitForSeconds(time); 
                 _okToAttack = true;
             }
