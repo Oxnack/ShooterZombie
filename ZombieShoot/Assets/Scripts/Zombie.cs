@@ -18,7 +18,7 @@ namespace Enemy
 
         private GameObject _target; // —сылка на целевой объект
         private Rigidbody _rb;
-
+        private Animator _animator;
         private Attack _attack = new Attack();
         public HP Hp = new HP();
 
@@ -28,9 +28,12 @@ namespace Enemy
         {
             _target = GameObject.FindGameObjectWithTag("Player");
             _rb = GetComponent<Rigidbody>();
+            _animator = GetComponent<Animator>();
 
             _attack.transform = transform;
             _attack.player = _target;
+
+            _animator.SetBool("run", true);
         }
 
         void Update()
@@ -50,6 +53,7 @@ namespace Enemy
             if ( _attack.isAttacking == false)
             {
                 _attack.isAttacking = true;
+                _animator.SetBool("Attac", true);
                 StartCoroutine(_attack.GetDamageByTime(_time, _distance, _damage));
             }
 
