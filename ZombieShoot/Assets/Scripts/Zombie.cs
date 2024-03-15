@@ -22,6 +22,8 @@ namespace Enemy
         private Attack _attack = new Attack();
         public HP Hp = new HP();
 
+        private bool _hasDeath = false;
+
 
 
         void Start()
@@ -32,8 +34,9 @@ namespace Enemy
 
             _attack.transform = transform;
             _attack.player = _target;
+            _attack.animator = _animator;
 
-            _animator.SetBool("run", true);
+            _animator.SetBool("walk", true);
         }
 
         void Update()
@@ -42,7 +45,7 @@ namespace Enemy
             Vector3 lookDirection = (targetPosition - transform.position).normalized; // Нормализуем вектор направления взгляда
 
             // Поворачиваем объект в направлении цели только по осям x и z
-            transform.LookAt(transform.position + lookDirection, Vector3.up);
+            if (!_hasDeath) transform.LookAt(transform.position + lookDirection, Vector3.up);
 
 
             Vector3 moveDirection = transform.forward;
@@ -53,33 +56,50 @@ namespace Enemy
             if ( _attack.isAttacking == false)
             {
                 _attack.isAttacking = true;
-                _animator.SetBool("Attac", true);
                 StartCoroutine(_attack.GetDamageByTime(_time, _distance, _damage));
             }
 
             _sliderHp.value = Hp.hp;
             _textHp.text = Hp.hp.ToString();
 
-            if(Hp.life == false)
+            if(Hp.life == false && _hasDeath == false)
             {
+                _hasDeath = true;
                 _target.GetComponent<Player>().Kills.GetKill(1);
-                Destroy(gameObject);
+                _speed = 0; 
+                _damage = 0;
+                _animator.SetBool("death", true);
+                StartCoroutine(DelayAnim());
             }
         }
+
+        public IEnumerator DelayAnim()
+        {
+            yield return new WaitForSeconds(5f);
+            Destroy(gameObject);
+        }
+
+
+
     }
 
     public class Attack
     {
         public Transform transform;
         public GameObject player;
+        public Animator animator;
         public bool isAttacking = false;
         public IEnumerator GetDamageByTime(float time, float distance, int damage)
         {
             while (Vector3.Distance(transform.position, player.transform.position) < distance && isAttacking == true)
             {
+                animator.SetBool("walk", false);
+                animator.SetBool("attack", true);
                 yield return new WaitForSeconds(time);
                 player.GetComponent<Player>().Hp.GetAttack(damage);
             }
+            animator.SetBool("attack", false);
+            animator.SetBool("walk", true);
             isAttacking = false;
         }
     }

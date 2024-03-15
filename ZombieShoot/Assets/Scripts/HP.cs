@@ -10,6 +10,7 @@ public class HP
         hp -= hpM;
         if (hp <= 0)
         {
+            hp = 0;
             life = false;
         }
     }
