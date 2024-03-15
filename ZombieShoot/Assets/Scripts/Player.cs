@@ -24,7 +24,7 @@ namespace PlayerController
         private PlayerMove _playerMove = new PlayerMove();
         private PlayerShoot _playerShoot = new PlayerShoot();
         private CameraMouseLook _cameraMouseLook = new CameraMouseLook();
-        private PlayerShoot PlayerShoot = new PlayerShoot();    
+        private PlayerShoot PlayerShoot = new PlayerShoot();
         public Kills Kills = new Kills();
         public HP Hp = new HP();
 
@@ -53,6 +53,7 @@ namespace PlayerController
         }
         private void Update()
         {
+
             _playerMove.Update();
             _cameraMouseLook.Update();
 
@@ -61,9 +62,9 @@ namespace PlayerController
 
             StartCoroutine(PlayerShoot.CheckAttack());
 
-            if(Hp.life == false)
+            if (Hp.life == false)
             {
-                transform.position = new Vector3(0f,4f,0f);
+                transform.position = new Vector3(0f, 4f, 0f);
                 Hp.life = true;
                 Hp.hp = 100;
                 Kills.kills = 0;
@@ -181,12 +182,14 @@ namespace PlayerController
         public float time = 1f;
         public bool _okToAttack = true;
         private float raycastDistance = 200f;
+<<<<<<< HEAD
         
 
+=======
+>>>>>>> 60b639aa91e75cc035f2485e4b3d0a7ff2f05af3
         public IEnumerator CheckAttack()
         {
-
-            if (Input.GetMouseButtonDown(0) && _okToAttack == true) // Проверяем нажатие левой кнопки мыши
+            if (Input.GetMouseButtonDown(0) && _okToAttack == true) // Проверяем нажатие левой кнопки мыши                                               
             {
                 _okToAttack = false;
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -205,9 +208,11 @@ namespace PlayerController
                 animator.SetBool("shoot", false);
                 yield return new WaitForSeconds(time);
                 _okToAttack = true;
+
             }
         }
+            
+          
     }
-
 }
 
