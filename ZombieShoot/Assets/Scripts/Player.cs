@@ -182,11 +182,6 @@ namespace PlayerController
         public float time = 1f;
         public bool _okToAttack = true;
         private float raycastDistance = 200f;
-<<<<<<< HEAD
-        
-
-=======
->>>>>>> 60b639aa91e75cc035f2485e4b3d0a7ff2f05af3
         public IEnumerator CheckAttack()
         {
             if (Input.GetMouseButtonDown(0) && _okToAttack == true) // Проверяем нажатие левой кнопки мыши                                               
@@ -202,9 +197,9 @@ namespace PlayerController
                     if (hit.collider.CompareTag("Zombie")) // Проверяем тег объекта, с которым столкнулся луч
                     {
                         hit.collider.GetComponent<Zombie>().Hp.GetAttack(damage); // Вызываем метод GetAttack() у компонента Zombie
-                        yield return new WaitForSeconds(0.1f);
                     }
                 }
+                yield return new WaitForSeconds(1f);
                 animator.SetBool("shoot", false);
                 yield return new WaitForSeconds(time);
                 _okToAttack = true;
