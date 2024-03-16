@@ -1,8 +1,10 @@
+using PlayerController;
 using UnityEngine;
 
 public class ZombieSpawner : MonoBehaviour                   // писал gpt
 {
     [SerializeField] private GameObject _zombiePrefab;
+
     public Vector3 spawnZoneMin;
     public Vector3 spawnZoneMax;
     public float initialSpawnInterval = 1f;
@@ -11,6 +13,10 @@ public class ZombieSpawner : MonoBehaviour                   // писал gpt
 
     private float currentSpawnInterval;
 
+    private void OnEnable()
+    {
+        currentSpawnInterval = initialSpawnInterval;
+    }
     void Start()
     {
         currentSpawnInterval = initialSpawnInterval;
@@ -21,8 +27,8 @@ public class ZombieSpawner : MonoBehaviour                   // писал gpt
     {
         Vector3 spawnPosition = new Vector3(Random.Range(spawnZoneMin.x, spawnZoneMax.x), Random.Range(spawnZoneMin.y, spawnZoneMax.y), Random.Range(spawnZoneMin.z, spawnZoneMax.z));
         Instantiate(_zombiePrefab, spawnPosition, Quaternion.identity);
-
         // Уменьшаем интервал спавна
+
         currentSpawnInterval = Mathf.Max(currentSpawnInterval - spawnIntervalDecreaseRate, minSpawnInterval);
         CancelInvoke("SpawnPrefab");
         InvokeRepeating("SpawnPrefab", currentSpawnInterval, currentSpawnInterval);

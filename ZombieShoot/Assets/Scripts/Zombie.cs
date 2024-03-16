@@ -76,6 +76,8 @@ namespace Enemy
 
         public IEnumerator DelayAnim()
         {
+            _rb.useGravity = false;
+            gameObject.GetComponent<CapsuleCollider>().enabled = false; 
             yield return new WaitForSeconds(5f);
             Destroy(gameObject);
         }

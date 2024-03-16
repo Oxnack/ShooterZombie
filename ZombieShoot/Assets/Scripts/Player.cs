@@ -57,6 +57,7 @@ namespace PlayerController
         }
         private void Update()
         {
+
             _playerMove.Update();
             _cameraMouseLook.Update();
 
