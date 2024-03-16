@@ -14,6 +14,8 @@ public class LobbyCavas : MonoBehaviour
 
     private void OnEnable()
     {
+        _player.GetComponent<PlayerController.Player>().enabled = false;
+        Cursor.lockState = CursorLockMode.None;
         DestroyAllZombies();
         _bestScore.text = "Убийства: " + PlayerPrefs.GetInt("kills").ToString();
         _ZomSpawner.SetActive(false);
@@ -22,6 +24,7 @@ public class LobbyCavas : MonoBehaviour
 
     public void GetStart()
     {
+        _player.GetComponent<PlayerController.Player>().enabled = true;
         Time.timeScale = 1;
         _ZomSpawner.SetActive(true);
         gameObject.SetActive(false);
