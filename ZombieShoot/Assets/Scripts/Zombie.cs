@@ -53,10 +53,11 @@ namespace Enemy
             // Двигаем объект с помощью Rigidbody.MovePosition
             _rb.MovePosition(_rb.position + moveDirection * _speed * Time.deltaTime);
 
+            _attack.damage = _damage;
             if ( _attack.isAttacking == false)
             {
                 _attack.isAttacking = true;
-                StartCoroutine(_attack.GetDamageByTime(_time, _distance, _damage));
+                StartCoroutine(_attack.GetDamageByTime(_time, _distance));
             }
 
             _sliderHp.value = Hp.hp;
@@ -89,7 +90,8 @@ namespace Enemy
         public GameObject player;
         public Animator animator;
         public bool isAttacking = false;
-        public IEnumerator GetDamageByTime(float time, float distance, int damage)
+        public int damage;
+        public IEnumerator GetDamageByTime(float time, float distance)
         {
             while (Vector3.Distance(transform.position, player.transform.position) < distance && isAttacking == true)
             {
